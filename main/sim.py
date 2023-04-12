@@ -25,3 +25,12 @@ if __name__ == '__main__':
     opp_5 = genhand(deck)
 
     flop = flopgen(deck)
+
+    user_hand = precedence(user_hand)
+
+    opp_1 = precedence(opp_1)
+    opp_2 = precedence(opp_2)
+    opp_3 = precedence(opp_3)
+    opp_4 = precedence(opp_4)
+    opp_5 = precedence(opp_5)
+

@@ -1,5 +1,5 @@
 import random
-
+from sim import deck
 from classes import *
 from typing import List
 
@@ -57,3 +57,18 @@ def flopgen(deck: List[Card]) -> List[Card]:
         deck.remove(choice)
         return_list.append(choice)
     return return_list
+
+def precedence(hand: List[Card], flop: List[Card]) -> List[Card]:
+    total_cards = []
+    for card in hand:
+        total_cards.append(card)
+    for card in flop:
+        total_cards.append(card)
+
+def reshuffle():
+    global deck
+    deck = deckmaker()
+
+
+
+
