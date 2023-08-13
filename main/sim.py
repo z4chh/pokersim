@@ -26,11 +26,14 @@ if __name__ == '__main__':
 
     flop = flopgen(deck)
 
-    user_hand = precedence(user_hand)
+    user_hand = precedence(user_hand, flop)
 
-    opp_1 = precedence(opp_1)
-    opp_2 = precedence(opp_2)
-    opp_3 = precedence(opp_3)
-    opp_4 = precedence(opp_4)
-    opp_5 = precedence(opp_5)
+    opp_1 = precedence(opp_1, flop)
+    opp_2 = precedence(opp_2, flop)
+    opp_3 = precedence(opp_3, flop)
+    opp_4 = precedence(opp_4, flop)
+    opp_5 = precedence(opp_5, flop)
+    print(flop, user_hand)
+    print(user_hand)
+
 
