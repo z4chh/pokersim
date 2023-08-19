@@ -101,6 +101,7 @@ def precedence(hand: List[Card], flop: List[Card]) -> int:
         for card in total_cards:
             if card in vrf:
                 card_counter += 1
+        card_counter = 0
     if card_counter >= 5:
         return 1
 
@@ -218,14 +219,58 @@ def precedence(hand: List[Card], flop: List[Card]) -> int:
             ranks.remove(value)
     num_of_combinations = 2
     for i in range(num_of_combinations):
-        if ranks[i + 4] - ranks[i] == 4:
+        if ranks[i + (len(ranks) - duplicate_count - 3)] - ranks[i] == 4:
             return 6
 
+    # -------------------------------Three of a kind----------------------------------------------------------
+    for card in total_cards:
+        if total_cards.count(card) == 3:
+            return 7
 
+    # -------------------------------Two pair-----------------------------------------------------------------
+    two_pair_tally = 0
+    current_total_cards = total_cards
+    for card in current_total_cards:
+        if current_total_cards.count(card) == 2:
+            two_pair_tally += 1
+            current_total_cards.remove(card)
+    if two_pair_tally >= 2:
+        return 8
 
+    # -------------------------------pair---------------------------------------------------------------------
+    for card in total_cards:
+        if total_cards.count(card) == 2:
+            return 9
 
-    return("you lost bro")
+    # -------------------------------high card--------------------------------------------------------------
+    return 10
+
 def reshuffle():
     '''this function 'reshuffles' the deck'''
     global deck
     deck = deckmaker()
+
+
+def translator(place: int) -> None:
+    if place == 1:
+        print("Royal Flush!! You're gonna win.")
+    elif place == 2:
+        print("Straight Flush! You've surely won")
+    elif place == 3:
+        print("Four of a kind!")
+    elif place == 4:
+        print("Full house!")
+    elif place == 5:
+        print("Flush, nice")
+    elif place == 6:
+        print("Straight")
+    elif place == 7:
+        print("Three of a kind")
+    elif place == 8:
+        print("Two pair")
+    elif place == 9:
+        print("Pair..")
+    elif place == 10:
+        print("Hope for high card...")
+
+
